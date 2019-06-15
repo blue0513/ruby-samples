@@ -1,4 +1,10 @@
 # myheap.rb
+
+### 使用例
+https://atcoder.jp/contests/abc128/tasks/abc128_e
+https://atcoder.jp/contests/abc128/submissions/5916231
+
+### メソッド説明
 def initialize(n)  
 いつもの(初期化用)  
 値を引数に削除・追加の操作を行いたかったので、  

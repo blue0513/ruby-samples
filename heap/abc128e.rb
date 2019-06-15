@@ -42,7 +42,7 @@ class Heap
     @size -= 1
     current_node_value = @nodes[@size]
     @nodes[@size] = nil
-    current_node_index = @index.delete(delete_target_value) # deleteの返り値は削除した値
+    current_node_index = @index.delete(delete_target_value) # delteの返り値は削除した値
 
     # 削除したのがそもそも末端だったら、終了。
     return if current_node_index == @size
@@ -130,3 +130,35 @@ class Heap
     @index[@nodes[index_j]] = index_j
   end
 end
+
+nn, qq = gets.split.map(&:to_i)
+events = []
+temp = []
+1.step(nn, 1) do |_i|
+  temp = gets.split.map(&:to_i)
+  next if temp[1] - temp[2] <= 0
+  x = temp[0] - temp[2]
+  x = x > 0 ? x : 0
+
+  events.push([temp[1] - temp[2], 1, temp[2]])
+  events.push([temp[0] - temp[2], 0, temp[2]])
+end
+1.step(qq, 1) do |i|
+  events.push([gets.to_i, 2, i])
+end
+events.sort_by!(&:first)
+
+ss = Heap.new(nn)
+ans = []
+
+events.each do |event|
+  if event[1] == 0
+    ss.push(event[2])
+  elsif event[1] == 1
+    ss.delete(event[2])
+  else
+    ans[event[2]] = ss.top
+  end
+end
+
+puts ans[1..-1]
