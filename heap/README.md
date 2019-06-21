@@ -1,7 +1,7 @@
 # myheap.rb
 
 ### 使用例
-https://atcoder.jp/contests/abc128/tasks/abc128_e
+https://atcoder.jp/contests/abc128/tasks/abc128_e  
 https://atcoder.jp/contests/abc128/submissions/5916231
 
 ### メソッド説明
