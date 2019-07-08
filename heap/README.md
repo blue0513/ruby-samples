@@ -1,8 +1,13 @@
 # myheap.rb
 
 ### 使用例
-https://atcoder.jp/contests/abc128/tasks/abc128_e  
+index & value delete型
+https://atcoder.jp/contests/abc128/tasks/abc128_e
 https://atcoder.jp/contests/abc128/submissions/5916231
+
+pop 型
+https://atcoder.jp/contests/abc062/tasks/arc074_b
+https://atcoder.jp/contests/abc062/submissions/6315855
 
 ### メソッド説明
 def initialize(n)  
