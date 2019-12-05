@@ -1,5 +1,5 @@
 MOD = (10**9) + 7
-ONE = '1'
+ONE = '1'.freeze
 
 def nCk(n, k)
   (fact(k + 1, n) * inv(fact(1, n - k) % MOD)) % MOD
@@ -17,4 +17,19 @@ def inv(x)
     beki = (beki * beki) % MOD
   end
   res
+end
+
+x, y = gets.chomp.split.map(&:to_i)
+
+min, max = [x, y].sort
+
+# min,maxのdiff回多く片方の遷移をしている。
+diff = max - min
+d_min = min - diff
+if !(d_min >= 0 && d_min == max - 2 * diff && (d_min % 3).zero?)
+  puts 0
+else
+  a = b = d_min / 3
+  a += diff
+  puts nCk(a + b, b)
 end
