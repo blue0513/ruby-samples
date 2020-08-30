@@ -50,6 +50,35 @@ end
 
 
 N = 1_000_000
+times = N/25
+TESTCASES = (1..N).to_a.sample(times)
+require 'prime'
+
+ans1 = []
+ans2 = []
+Benchmark.bm 10 do |r|
+  r.report 'MyDivsor' do
+    divisor = PrimeDivWithSieve.new(N)
+    TESTCASES.each do |i|
+      ans1.push(divisor.prime_division(i))
+    end
+  end
+
+  r.report 'PrimeDiv' do
+    TESTCASES.each do |i|
+      ans2.push(i.prime_division)
+    end
+  end
+end
+
+puts ans1 == ans2
+
+# Result
+# user     system      total        real
+# MyDivsor     0.875262   0.032392   0.907654 (  0.926605)
+# PrimeDiv     0.849263   0.012468   0.861731 (  0.879886)
+
+N = 1_000_000
 times = N/2
 TESTCASES = (1..N).to_a.sample(times)
 require 'prime'
@@ -65,17 +94,13 @@ Benchmark.bm 10 do |r|
   end
 
   r.report 'PrimeDiv' do
-    divisor = PrimeDivWithSieve.new(N)
     TESTCASES.each do |i|
       ans2.push(i.prime_division)
     end
   end
 end
 
-puts ans1 == ans2
-
 # Result
 # user     system      total        real
-# MyDivsor     1.806590   0.092433   1.899023 (  2.133883)
-# PrimeDiv    11.810816   0.136474  11.947290 ( 12.219996)
-# true
+# MyDivsor     1.659268   0.058786   1.718054 (  1.758668)
+# PrimeDiv    10.787444   0.118755  10.906199 ( 11.071594)
